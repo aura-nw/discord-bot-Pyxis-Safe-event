@@ -1,0 +1,24 @@
+{
+  "name": "discord-bot-safe",
+  "version": "1.0.0",
+  "description": "discord bot for pyxis safe event",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-modules --es-module-specifier-resolution=node app.js"
+  },
+  "keywords": [
+    "aura",
+    "network",
+    "pyxis",
+    "safe"
+  ],
+  "author": "santi",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.1"
+  }
+}
