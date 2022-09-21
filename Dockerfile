@@ -1,4 +1,6 @@
-FROM node:16
+FROM alpine:3.15
+
+ENV NODE_VERSION 18.9.0
 
 ARG PORT=8000
 
