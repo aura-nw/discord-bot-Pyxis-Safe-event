@@ -1,7 +1,4 @@
-FROM alpine:3.15
-
-RUN echo "Node: " && node -v
-RUN echo "NPM: " && npm -v
+FROM node:18.4.0
 
 ARG PORT=8000
 
