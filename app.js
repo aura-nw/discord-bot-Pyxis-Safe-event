@@ -20,8 +20,6 @@ client.on('messageCreate', async (msg) => {
 
 		const userId = msg.author.username;
 		const userIdev = msg.author.id;
-		console.log(userId);
-		console.log(userIdev);
 
 		if (message.startsWith('i have done my pyxis safe task')) {
 			const listLinkedId = data.find(element => element.find(e => e == userId));
@@ -31,8 +29,10 @@ client.on('messageCreate', async (msg) => {
 					if (Object.hasOwnProperty.call(listLinkedId, user)) {
 						const el = listLinkedId[user];
 						if (el == userId) continue;
-						let id = client.users.cache.find(userf => userf.username == el).id;
-						replyMsg = replyMsg.concat(`<@${id}> `);
+						console.log(el);
+						let user = client.users.cache.find(userf => userf.username == el);
+						console.log(user);
+						replyMsg = replyMsg.concat(`<@${user.id}> `);
 					}
 				}
 			}
