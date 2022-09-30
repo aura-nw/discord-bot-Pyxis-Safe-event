@@ -19,6 +19,7 @@ client.on('messageCreate', async (msg) => {
 		const message = msg.content.toLowerCase();
 
 		const userId = msg.author.username;
+		console.log(userID);
 
 		if (message.startsWith('i have done my pyxis safe task')) {
 			const listLinkedId = data.find(element => element.find(e => e == userId));
