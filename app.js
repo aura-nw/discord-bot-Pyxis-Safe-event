@@ -31,7 +31,8 @@ client.on('messageCreate', async (msg) => {
 					if (Object.hasOwnProperty.call(listLinkedId, user)) {
 						const el = listLinkedId[user];
 						if (el == userId) continue;
-						replyMsg = replyMsg.concat(`<@${el}> `);
+						let id = let user = client.users.find(user => user.username == el).id;
+						replyMsg = replyMsg.concat(`<@${id}> `);
 					}
 				}
 			}
