@@ -17,10 +17,8 @@ client.once('ready', () => {
 client.on('messageCreate', async (msg) => {
 	try {
 		const message = msg.content.toLowerCase();
-		// console.log(message);
 
 		const userId = msg.author.id;
-		// console.log(userId);
 
 		if (message.startsWith('i have done my pyxis safe task')) {
 			const listLinkedId = data.find(element => element.find(e => e == userId));
@@ -35,8 +33,7 @@ client.on('messageCreate', async (msg) => {
 				}
 			}
 
-			// console.log(replyMsg);
-
+			replyMsg = replyMsg.concat('. If you have completed, please ignore this message.');
 			msg.reply(replyMsg);
 		}
 	}
