@@ -18,21 +18,18 @@ client.on('messageCreate', async (msg) => {
 	try {
 		const message = msg.content.toLowerCase();
 
-		const userId = msg.author.username;
-		const userIdev = msg.author.id;
-
-		if (message.startsWith('i have done my pyxis safe task')) {
-			const listLinkedId = data.find(element => element.find(e => e == userId));
+		const userId = msg.author.tag;
+		
+		if (message.startsWith('ping my partners')) {
+			const listLinkedId = data.find(element => element.find(e => e === userId));
 			let replyMsg = 'It\'s your turn, guys!!! ';
 			if (listLinkedId.includes(userId)) {
-				for (const user in listLinkedId) {
+			for (const user in listLinkedId) {
 					if (Object.hasOwnProperty.call(listLinkedId, user)) {
 						const el = listLinkedId[user];
 						if (el == userId) continue;
-						console.log(el);
-						let user = client.users.cache.find(userf => userf.username == el);
-						console.log(user);
-						replyMsg = replyMsg.concat(`<@${user.id}> `);
+						let f = client.users.cache.find(userf => userf.tag === el);
+						replyMsg = replyMsg.concat(`<${f}> `);
 					}
 				}
 			}
