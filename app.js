@@ -50,7 +50,7 @@ client.on('messageCreate', async (msg) => {
 
 		const userId = msg.author.id;
 
-		if (message.startsWith('i have done my pyxis safe task')) {
+		if (message.startsWith('ping my partners')) {
 			const listLinkedId = data.find(element => element.find(e => e == userId));
 			let replyMsg = 'It\'s your turn, guys!!! ';
 			if (listLinkedId.includes(userId)) {
@@ -62,8 +62,10 @@ client.on('messageCreate', async (msg) => {
 					}
 				}
 			}
+			else {
+				msg.reply('Sorry! You did not participate in the game today.');
+			}
 
-			replyMsg = replyMsg.concat('. If you have completed, please ignore this message.');
 			msg.reply(replyMsg);
 		}
 	}
