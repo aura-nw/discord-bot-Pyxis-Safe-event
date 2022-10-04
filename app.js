@@ -53,6 +53,7 @@ client.on('messageCreate', async (msg) => {
 		if (message.startsWith('ping my partners')) {
 			const listLinkedId = data.find(element => element.find(e => e == userId));
 			let replyMsg = 'It\'s your turn, guys!!! ';
+			if (!listLinkedId) msg.reply('Sorry! You did not participate in the game today.');
 			if (listLinkedId.includes(userId)) {
 				for (const user in listLinkedId) {
 					if (Object.hasOwnProperty.call(listLinkedId, user)) {
@@ -61,9 +62,6 @@ client.on('messageCreate', async (msg) => {
 						replyMsg = replyMsg.concat(`<@${el}> `);
 					}
 				}
-			}
-			else {
-				msg.reply('Sorry! You did not participate in the game today.');
 			}
 
 			msg.reply(replyMsg);
