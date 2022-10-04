@@ -1,6 +1,6 @@
 // Require the necessary discord.js classes
 const { Client, GatewayIntentBits, Partials } = require('discord.js');
-const { token, dataUsername } = require('./config.json');
+const { token, dataUsername, data } = require('./config.json');
 
 let dataId = [];
 // Create a new client instance
@@ -14,31 +14,34 @@ const client = new Client({ intents: [GatewayIntentBits.DirectMessages,
 // When the client is ready, run this code (only once)
 client.once('ready', async () => {
 	console.log('Ready!');
-	const guild = await client.guilds.fetch('945877953147969586');
-	await guild.members.fetch();
 
-	const channel = await guild.channels.fetch('966618200810881024');
-	const userIds = {};
+	// ***** GET dataId *****
+	// const guild = await client.guilds.fetch('945877953147969586');
+	// await guild.members.fetch();
 
-	for (const [, guildMember] of channel.members) {
-		// console.log(guildMember);
-		console.log(`${guildMember.user.username}#${guildMember.user.discriminator} (${guildMember.id})`);
-		userIds[`${guildMember.user.username}#${guildMember.user.discriminator}`] = guildMember.id;
-	}
-	console.log(userIds);
+	// const channel = await guild.channels.fetch('966618200810881024');
+	// const userIds = {};
 
-	dataId = dataUsername.map(list => {
-		const idList = [];
-		for (const key in list) {
-			if (Object.hasOwnProperty.call(list, key)) {
-				const name = list[key];
+	// for (const [, guildMember] of channel.members) {
+	// 	// console.log(guildMember);
+	// 	console.log(`${guildMember.user.username}#${guildMember.user.discriminator} (${guildMember.id})`);
+	// 	userIds[`${guildMember.user.username}#${guildMember.user.discriminator}`] = guildMember.id;
+	// }
+	// console.log(userIds);
 
-				idList.push(userIds[name]);
-			}
-		}
-		return idList;
-	});
-	console.log(dataId);
+	// dataId = dataUsername.map(list => {
+	// 	const idList = [];
+	// 	for (const key in list) {
+	// 		if (Object.hasOwnProperty.call(list, key)) {
+	// 			const name = list[key];
+
+	// 			idList.push(userIds[name]);
+	// 		}
+	// 	}
+	// 	return idList;
+	// });
+	// console.log(dataId);
+	// ***** END GET dataId *****
 });
 
 client.on('messageCreate', async (msg) => {
@@ -50,7 +53,7 @@ client.on('messageCreate', async (msg) => {
 		// console.log(userId);
 
 		if (message.startsWith('i have done my pyxis safe task')) {
-			const listLinkedId = dataId.find(element => element.find(e => e == userId));
+			const listLinkedId = data.find(element => element.find(e => e == userId));
 			let replyMsg = 'It\'s your turn, guys!!! ';
 			if (listLinkedId.includes(userId)) {
 				for (const user in listLinkedId) {
